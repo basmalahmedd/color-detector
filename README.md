@@ -22,7 +22,7 @@ Detects colors in images or videos using OpenCV and Python.
 
 ```bash
 python main.py
+```
 
-
-##📘 License
+## 📘 License
 Open source under the MIT License
