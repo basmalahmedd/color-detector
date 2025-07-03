@@ -1,12 +1,12 @@
 import cv2
 import pandas as pd
 
-
+#  CSV of known colors 
 csv_path = 'colors.csv'
 index = ["color", "color_name", "hex", "R", "G", "B"]
 df = pd.read_csv(csv_path, names=index, header=None)
 
-
+#  Globals for mouse click 
 clicked = False
 r = g = b = xpos = ypos = 0
 
@@ -21,7 +21,7 @@ def get_color_name(R, G, B):
             cname = df.loc[i, "color_name"]
     return cname
 
-
+# Mouse Callback 
 def draw_function(event, x, y, flags, param):
     global b, g, r, xpos, ypos, clicked
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -33,7 +33,7 @@ def draw_function(event, x, y, flags, param):
         g = int(g)
         r = int(r)
 
-
+#  Mode: Image or Video 
 mode = input("Enter 'image' or 'video': ").strip().lower()
 
 if mode == "image":
