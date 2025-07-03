@@ -1,16 +1,16 @@
 import cv2
 import pandas as pd
 
-# === Load CSV of known colors ===
+
 csv_path = 'colors.csv'
 index = ["color", "color_name", "hex", "R", "G", "B"]
 df = pd.read_csv(csv_path, names=index, header=None)
 
-# === Globals for mouse click ===
+
 clicked = False
 r = g = b = xpos = ypos = 0
 
-# === Get nearest color name ===
+
 def get_color_name(R, G, B):
     minimum = float('inf')
     cname = ""
@@ -21,7 +21,7 @@ def get_color_name(R, G, B):
             cname = df.loc[i, "color_name"]
     return cname
 
-# === Mouse Callback ===
+
 def draw_function(event, x, y, flags, param):
     global b, g, r, xpos, ypos, clicked
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -33,11 +33,11 @@ def draw_function(event, x, y, flags, param):
         g = int(g)
         r = int(r)
 
-# === Mode: Image or Video ===
+
 mode = input("Enter 'image' or 'video': ").strip().lower()
 
 if mode == "image":
-    # === IMAGE MODE ===
+  
     img_path = "sample.jpg"
     img = cv2.imread(img_path)
     img = cv2.resize(img, (800, 600))
@@ -65,8 +65,8 @@ if mode == "image":
     cv2.destroyAllWindows()
 
 elif mode == "video":
-    # === VIDEO MODE ===
-    video_path = 'video.mp4'  # Change to your actual file name
+   
+    video_path = 'video.mp4'  
     cap = cv2.VideoCapture(video_path)
 
     if not cap.isOpened():
